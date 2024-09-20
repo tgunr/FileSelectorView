@@ -17,16 +17,11 @@ public struct DirectorySelectorView: View {
                 Text(url!.lastPathComponent).fixedSize()
             } else {
                 HStack {
-                    Text("Select...")
-                        .fontWeight(.ultraLight)
-                        .italic()
-                        .padding([.top, .leading], 4.0)
-                        
-                    Spacer()
+                    Button("Choose Directory") {
+                        self.selectFile()
+                    }
+                    .padding()
                 }
-            }
-            Button("Choose Directory") {
-                self.selectFile()
             }
         }
     }
@@ -54,7 +49,6 @@ struct DirectorySelectorView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             DirectorySelectorView(url: .constant(nil))
-            DirectorySelectorView(url: .constant(URL(fileURLWithPath: "/Applications")))
         }
     }
 }
